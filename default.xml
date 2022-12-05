@@ -8,27 +8,27 @@
   <project path="FreeCAD" name="FreeCAD/FreeCAD" groups="base"/>
 
   <!-- libs -->
-  <project path="FreeCAD-symbols" name="FreeCAD/FreeCAD-symbols" groups="libs"/>
-  <project path="FreeCAD-library" name="FreeCAD/FreeCAD-library" groups="libs"/>
-  <project path="FreeCAD-LibPack" name="FreeCAD/FreeCAD-LibPack" groups="libs"/>
+  <project path="libs/FreeCAD-symbols" name="FreeCAD/FreeCAD-symbols" groups="libs"/>
+  <project path="libs/FreeCAD-library" name="FreeCAD/FreeCAD-library" groups="libs"/>
+  <project path="libs/FreeCAD-LibPack" name="FreeCAD/FreeCAD-LibPack" groups="libs"/>
 
   <!-- docs -->
-  <project path="FreeCAD-documentation" name="FreeCAD/FreeCAD-documentation" groups="docs" revision="refs/heads/main"/>
-  <project path="FreeCAD-Help" name="FreeCAD/FreeCAD-Help" groups="docs" revision="refs/heads/main"/>
-  <project path="FreeCAD-examples" name="FreeCAD/FreeCAD-examples" groups="docs"/>
+  <project path="docs/FreeCAD-documentation" name="FreeCAD/FreeCAD-documentation" groups="docs" revision="refs/heads/main"/>
+  <project path="docs/FreeCAD-Help" name="FreeCAD/FreeCAD-Help" groups="docs" revision="refs/heads/main"/>
+  <project path="Examples" name="FreeCAD/Examples" groups="docs"/>
 
   <!-- addons -->
-  <project path="FreeCAD-addons" name="FreeCAD/FreeCAD-addons" groups="addons"/>
-  <project path="FreeCAD-macros" name="FreeCAD/FreeCAD-macros" groups="addons,macros"/>
+  <project path="addons/FreeCAD-addons" name="FreeCAD/FreeCAD-addons" groups="addons"/>
+  <project path="addons/FreeCAD-macros" name="FreeCAD/FreeCAD-macros" groups="addons,macros"/>
 
   <!-- workbench examples -->
-  <project path="FreeCAD-render" name="FreeCAD/FreeCAD-render" groups="workbench"/>
-  <project path="FreeCAD.ship" name="FreeCAD/FreeCAD.ship" groups="workbench"/>
-  <project path="FreeCAD.plot" name="FreeCAD/FreeCAD.plot" groups="workbench"/>
-  <project path="FreeCAD.workbench_starterkit" name="FreeCAD/FreeCAD.workbench_starterkit" groups="workbench"/>
-  <project path="ArchDesign" name="FreeCAD/ArchDesign" groups="workbench"/>
+  <project path="wb/FreeCAD-render" name="FreeCAD/FreeCAD-render" groups="workbench"/>
+  <project path="wb/FreeCAD.ship" name="FreeCAD/FreeCAD.ship" groups="workbench"/>
+  <project path="wb/FreeCAD.plot" name="FreeCAD/FreeCAD.plot" groups="workbench"/>
+  <project path="wb/FreeCAD.workbench_starterkit" name="FreeCAD/FreeCAD.workbench_starterkit" groups="workbench"/>
+  <project path="wb/ArchDesign" name="FreeCAD/ArchDesign" groups="workbench"/>
 
   <!-- devops -->
-  <project path="FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
-  <project path="FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops" revision="refs/heads/main"/>
+  <project path="devops/FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
+  <project path="devops/FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops" revision="refs/heads/main"/>
 </manifest>
