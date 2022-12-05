@@ -1,0 +1,18 @@
+#+TITLE:     Ectorepo: FreeCAD
+#+AUTHOR:    David Conner
+#+EMAIL:     noreply@te.xel.io
+#+DESCRIPTION: Ecto
+
+I did it [[https://wiki.freecadweb.org/File:Part_Classes.jpg][all]] for de [[https://forum.freecadweb.org/viewtopic.php?style=10&t=12325][UML]]
+
+#+begin_src sh :eval no
+mkdir FreeCAD
+cd !$
+repo init -u
+repo sync -j6
+# ... there be gigs of data in davey jones lockar
+# ...
+# now let repo/git take a breather
+repo sync -j6 --fetch-submodules
+# to get the freecad addons
+#+end_src
