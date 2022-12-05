@@ -30,5 +30,5 @@
 
   <!-- devops -->
   <project path="FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
-  <project path="FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops"/>
+  <project path="FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops" revision="refs/heads/main"/>
 </manifest>
