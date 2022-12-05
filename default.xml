@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <include name="_remotes.xml" />
+
+  <default remote="github" sync-j="8" revision="refs/heads/master" />
+
+  <!-- base -->
+  <project path="FreeCAD" name="FreeCAD/FreeCAD" groups="base"/>
+
+  <!-- libs -->
+  <project path="FreeCAD-symbols" name="FreeCAD/FreeCAD-symbols" groups="libs"/>
+  <project path="FreeCAD-library" name="FreeCAD/FreeCAD-library" groups="libs"/>
+  <project path="FreeCAD-LibPack" name="FreeCAD/FreeCAD-LibPack" groups="libs"/>
+
+  <!-- docs -->
+  <project path="FreeCAD-documentation" name="FreeCAD/FreeCAD-documentation" groups="docs" revision="refs/heads/main"/>
+  <project path="FreeCAD-Help" name="FreeCAD/FreeCAD-Help" groups="docs" revision="refs/heads/main"/>
+  <project path="FreeCAD-examples" name="FreeCAD/FreeCAD-examples" groups="docs"/>
+
+  <!-- addons -->
+  <project path="FreeCAD-addons" name="FreeCAD/FreeCAD-addons" groups="addons"/>
+  <project path="FreeCAD-macros" name="FreeCAD/FreeCAD-macros" groups="addons,macros"/>
+
+  <!-- workbench examples -->
+  <project path="FreeCAD-render" name="FreeCAD/FreeCAD-render" groups="workbench"/>
+  <project path="FreeCAD.ship" name="FreeCAD/FreeCAD.ship" groups="workbench"/>
+  <project path="FreeCAD.plot" name="FreeCAD/FreeCAD.plot" groups="workbench"/>
+  <project path="FreeCAD.workbench_starterkit" name="FreeCAD/FreeCAD.workbench_starterkit" groups="workbench"/>
+  <project path="ArchDesign" name="FreeCAD/ArchDesign" groups="workbench"/>
+
+  <!-- devops -->
+  <project path="FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
+  <project path="FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops"/>
+</manifest>
