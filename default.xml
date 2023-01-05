@@ -49,6 +49,6 @@
 
   <project path="cadquery/util/jupyter-cadquery" name="bernhard-42/jupyter-cadquery" groups="occ cadquery" />
   <project path="cadquery/util/cq_gears" name="meadiode/cq_gears" groups="occ cadquery" />
-  <project path="cadquery/util/kicad-packages3D-generator" name="kicad/libraries/kicad-packages3D-generator" groups="occ cadquery" />
+  <project path="cadquery/util/kicad-packages3D-generator" name="kicad/libraries/kicad-packages3D-generator" groups="occ cadquery" remote="gitlab" />
 
 </manifest>
