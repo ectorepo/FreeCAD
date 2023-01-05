@@ -35,7 +35,7 @@
   <project path="pythonocc/oce" name="tpaviot/oce" groups="occ pythonocc" />
   <project path="pythonocc/core" name="tpaviot/pythonocc-core" groups="occ pythonocc" />
   <project path="pythonocc/generator" name="tpaviot/pythonocc-generator" groups="occ pythonocc" />
-  <project path="pythonocc/utils" name="tpaviot/pythonocc-util" groups="occ pythonocc" />
+  <project path="pythonocc/utils" name="tpaviot/pythonocc-utils" groups="occ pythonocc" />
   <project path="pythonocc/demos" name="tpaviot/pythonocc-demos" groups="occ pythonocc" />
 
   <project path="cadquery/ocp" name="CadQuery/OCP" groups="occ cadquery" />
