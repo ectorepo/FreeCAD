@@ -32,12 +32,14 @@
   <project path="devops/FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
   <project path="devops/FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops" revision="refs/heads/main"/>
 
+  <!-- pythonocc -->
   <project path="pythonocc/oce" name="tpaviot/oce" groups="occ pythonocc" />
   <project path="pythonocc/core" name="tpaviot/pythonocc-core" groups="occ pythonocc" />
   <project path="pythonocc/generator" name="tpaviot/pythonocc-generator" groups="occ pythonocc" />
   <project path="pythonocc/utils" name="tpaviot/pythonocc-utils" groups="occ pythonocc" />
   <project path="pythonocc/demos" name="tpaviot/pythonocc-demos" groups="occ pythonocc" />
 
+  <!-- cadquery -->
   <project path="cadquery/ocp" name="CadQuery/OCP" groups="occ cadquery" />
   <project path="cadquery/pywrap" name="CadQuery/pywrap" groups="occ cadquery" />
   <project path="cadquery/cadquery" name="CadQuery/cadquery" groups="occ cadquery" />
@@ -47,6 +49,7 @@
   <project path="cadquery/cq-cli" name="CadQuery/cq-cli" groups="occ cadquery" />
   <project path="cadquery/contrib" name="CadQuery/cadquery-contrib" groups="occ cadquery" />
 
+  <!-- cadquery plugins -->
   <project path="cadquery/util/jupyter-cadquery" name="bernhard-42/jupyter-cadquery" groups="occ cadquery" />
   <project path="cadquery/util/cq_gears" name="meadiode/cq_gears" groups="occ cadquery" revision="refs/heads/main" />
   <project path="cadquery/util/kicad-packages3D-generator" name="kicad/libraries/kicad-packages3D-generator" groups="occ cadquery" remote="gitlab" />
