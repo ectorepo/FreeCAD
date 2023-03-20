@@ -32,6 +32,10 @@
   <project path="devops/FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
   <project path="devops/FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops" revision="refs/heads/main"/>
 
+  <!-- open cascade -->
+
+  <!-- tcl examples -->
+
   <!-- pythonocc -->
   <project path="pythonocc/oce" name="tpaviot/oce" groups="occ pythonocc" />
   <project path="pythonocc/core" name="tpaviot/pythonocc-core" groups="occ pythonocc" />
