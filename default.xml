@@ -1,61 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <include name="_remotes.xml" />
-
-  <default remote="github" sync-j="8" revision="refs/heads/master" />
-
+  <include name="_remotes.xml"/>
+  <default remote="github" sync-j="8" revision="refs/heads/master"/>
   <!-- base -->
   <project path="FreeCAD" name="FreeCAD/FreeCAD" groups="base"/>
-
   <!-- libs -->
   <project path="libs/FreeCAD-symbols" name="FreeCAD/FreeCAD-symbols" groups="libs"/>
   <project path="libs/FreeCAD-library" name="FreeCAD/FreeCAD-library" groups="libs"/>
   <project path="libs/FreeCAD-LibPack" name="FreeCAD/FreeCAD-LibPack" groups="libs"/>
-
   <!-- docs -->
   <project path="docs/FreeCAD-documentation" name="FreeCAD/FreeCAD-documentation" groups="docs" revision="refs/heads/main"/>
   <project path="docs/FreeCAD-Help" name="FreeCAD/FreeCAD-Help" groups="docs" revision="refs/heads/main"/>
   <project path="Examples" name="FreeCAD/Examples" groups="docs"/>
-
   <!-- addons -->
   <project path="addons/FreeCAD-addons" name="FreeCAD/FreeCAD-addons" groups="addons"/>
   <project path="addons/FreeCAD-macros" name="FreeCAD/FreeCAD-macros" groups="addons,macros"/>
-
   <!-- workbench examples -->
   <project path="wb/FreeCAD-render" name="FreeCAD/FreeCAD-render" groups="workbench"/>
   <project path="wb/FreeCAD.ship" name="FreeCAD/FreeCAD.ship" groups="workbench"/>
   <project path="wb/FreeCAD.plot" name="FreeCAD/FreeCAD.plot" groups="workbench"/>
   <project path="wb/FreeCAD.workbench_starterkit" name="FreeCAD/FreeCAD.workbench_starterkit" groups="workbench"/>
   <project path="wb/ArchDesign" name="FreeCAD/ArchDesign" groups="workbench"/>
-
   <!-- devops -->
   <project path="devops/FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
   <project path="devops/FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops" revision="refs/heads/main"/>
-
   <!-- open cascade -->
-
   <!-- tcl examples -->
-
   <!-- pythonocc -->
-  <project path="pythonocc/oce" name="tpaviot/oce" groups="occ pythonocc" />
-  <project path="pythonocc/core" name="tpaviot/pythonocc-core" groups="occ pythonocc" />
-  <project path="pythonocc/generator" name="tpaviot/pythonocc-generator" groups="occ pythonocc" />
-  <project path="pythonocc/utils" name="tpaviot/pythonocc-utils" groups="occ pythonocc" />
-  <project path="pythonocc/demos" name="tpaviot/pythonocc-demos" groups="occ pythonocc" />
-
+  <project path="pythonocc/oce" name="tpaviot/oce" groups="occ pythonocc"/>
+  <project path="pythonocc/core" name="tpaviot/pythonocc-core" groups="occ pythonocc"/>
+  <project path="pythonocc/generator" name="tpaviot/pythonocc-generator" groups="occ pythonocc"/>
+  <project path="pythonocc/utils" name="tpaviot/pythonocc-utils" groups="occ pythonocc"/>
+  <project path="pythonocc/demos" name="tpaviot/pythonocc-demos" groups="occ pythonocc"/>
   <!-- cadquery -->
-  <project path="cadquery/ocp" name="CadQuery/OCP" groups="occ cadquery" />
-  <project path="cadquery/pywrap" name="CadQuery/pywrap" groups="occ cadquery" />
-  <project path="cadquery/cadquery" name="CadQuery/cadquery" groups="occ cadquery" />
-  <project path="cadquery/cq-editor" name="CadQuery/CQ-editor" groups="occ cadquery" />
-  <project path="cadquery/plugins" name="CadQuery/cadquery-plugins" groups="occ cadquery" revision="refs/heads/main" />
-  <project path="cadquery/ocp-build-system" name="CadQuery/ocp-build-system" groups="occ cadquery" revision="refs/heads/main" />
-  <project path="cadquery/cq-cli" name="CadQuery/cq-cli" groups="occ cadquery" />
-  <project path="cadquery/contrib" name="CadQuery/cadquery-contrib" groups="occ cadquery" />
-
+  <project path="cadquery/ocp" name="CadQuery/OCP" groups="occ cadquery"/>
+  <project path="cadquery/pywrap" name="CadQuery/pywrap" groups="occ cadquery"/>
+  <project path="cadquery/cadquery" name="CadQuery/cadquery" groups="occ cadquery"/>
+  <project path="cadquery/cq-editor" name="CadQuery/CQ-editor" groups="occ cadquery"/>
+  <project path="cadquery/plugins" name="CadQuery/cadquery-plugins" groups="occ cadquery" revision="refs/heads/main"/>
+  <project path="cadquery/ocp-build-system" name="CadQuery/ocp-build-system" groups="occ cadquery" revision="refs/heads/main"/>
+  <project path="cadquery/cq-cli" name="CadQuery/cq-cli" groups="occ cadquery"/>
+  <project path="cadquery/contrib" name="CadQuery/cadquery-contrib" groups="occ cadquery"/>
   <!-- cadquery plugins -->
-  <project path="cadquery/util/jupyter-cadquery" name="bernhard-42/jupyter-cadquery" groups="occ cadquery" />
-  <project path="cadquery/util/cq_gears" name="meadiode/cq_gears" groups="occ cadquery" revision="refs/heads/main" />
-  <project path="cadquery/util/kicad-packages3D-generator" name="kicad/libraries/kicad-packages3D-generator" groups="occ cadquery" remote="gitlab" />
-
+  <project path="cadquery/util/jupyter-cadquery" name="bernhard-42/jupyter-cadquery" groups="occ cadquery"/>
+  <project path="cadquery/util/cq_gears" name="meadiode/cq_gears" groups="occ cadquery" revision="refs/heads/main"/>
+  <project path="cadquery/util/kicad-packages3D-generator" name="kicad/libraries/kicad-packages3D-generator" groups="occ cadquery" remote="gitlab"/>
 </manifest>
