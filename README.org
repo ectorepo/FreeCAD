@@ -2,6 +2,7 @@
 #+AUTHOR:    David Conner
 #+EMAIL:     noreply@te.xel.io
 #+DESCRIPTION: Ecto
+#+PROPERTY: header-args :comments none
 
 I did it [[https://wiki.freecadweb.org/File:Part_Classes.jpg][all]] for de [[https://forum.freecadweb.org/viewtopic.php?style=10&t=12325][UML]]
 
