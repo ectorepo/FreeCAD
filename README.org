@@ -17,3 +17,247 @@ repo sync -j6
 repo sync -j6 --fetch-submodules
 # to get the freecad addons
 #+end_src
+
+
+#+begin_src xml :tangle default.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <include name="_remotes.xml"/>
+  <default remote="github" sync-j="8" revision="refs/heads/master"/>
+  <!-- base -->
+  <project path="FreeCAD" name="FreeCAD/FreeCAD" groups="base"/>
+  <!-- libs -->
+  <project path="libs/FreeCAD-symbols" name="FreeCAD/FreeCAD-symbols" groups="libs"/>
+  <project path="libs/FreeCAD-library" name="FreeCAD/FreeCAD-library" groups="libs"/>
+  <project path="libs/FreeCAD-LibPack" name="FreeCAD/FreeCAD-LibPack" groups="libs"/>
+  <!-- docs -->
+  <project path="docs/FreeCAD-documentation" name="FreeCAD/FreeCAD-documentation" groups="docs" revision="refs/heads/main"/>
+  <project path="docs/FreeCAD-Help" name="FreeCAD/FreeCAD-Help" groups="docs" revision="refs/heads/main"/>
+  <project path="Examples" name="FreeCAD/Examples" groups="docs"/>
+  <!-- addons -->
+  <project path="addons/FreeCAD-addons" name="FreeCAD/FreeCAD-addons" groups="addons"/>
+  <project path="addons/FreeCAD-macros" name="FreeCAD/FreeCAD-macros" groups="addons,macros"/>
+  <!-- workbench examples -->
+  <project path="wb/FreeCAD-render" name="FreeCAD/FreeCAD-render" groups="workbench"/>
+  <project path="wb/FreeCAD.ship" name="FreeCAD/FreeCAD.ship" groups="workbench"/>
+  <project path="wb/FreeCAD.plot" name="FreeCAD/FreeCAD.plot" groups="workbench"/>
+  <project path="wb/FreeCAD.workbench_starterkit" name="FreeCAD/FreeCAD.workbench_starterkit" groups="workbench"/>
+  <project path="wb/ArchDesign" name="FreeCAD/ArchDesign" groups="workbench"/>
+  <!-- devops -->
+  <project path="devops/FreeCAD-Bundle" name="FreeCAD/FreeCAD-Bundle" groups="devops"/>
+  <project path="devops/FreeCAD-CI" name="FreeCAD/FreeCAD-CI" groups="devops" revision="refs/heads/main"/>
+  <!-- open cascade -->
+  <!-- tcl examples -->
+  <!-- pythonocc -->
+  <project path="pythonocc/oce" name="tpaviot/oce" groups="occ pythonocc"/>
+  <project path="pythonocc/core" name="tpaviot/pythonocc-core" groups="occ pythonocc"/>
+  <project path="pythonocc/generator" name="tpaviot/pythonocc-generator" groups="occ pythonocc"/>
+  <project path="pythonocc/utils" name="tpaviot/pythonocc-utils" groups="occ pythonocc"/>
+  <project path="pythonocc/demos" name="tpaviot/pythonocc-demos" groups="occ pythonocc"/>
+  <!-- cadquery -->
+  <project path="cadquery/ocp" name="CadQuery/OCP" groups="occ cadquery"/>
+  <project path="cadquery/pywrap" name="CadQuery/pywrap" groups="occ cadquery"/>
+  <project path="cadquery/cadquery" name="CadQuery/cadquery" groups="occ cadquery"/>
+  <project path="cadquery/cq-editor" name="CadQuery/CQ-editor" groups="occ cadquery"/>
+  <project path="cadquery/plugins" name="CadQuery/cadquery-plugins" groups="occ cadquery" revision="refs/heads/main"/>
+  <project path="cadquery/ocp-build-system" name="CadQuery/ocp-build-system" groups="occ cadquery" revision="refs/heads/main"/>
+  <project path="cadquery/cq-cli" name="CadQuery/cq-cli" groups="occ cadquery"/>
+  <project path="cadquery/contrib" name="CadQuery/cadquery-contrib" groups="occ cadquery"/>
+  <!-- cadquery plugins -->
+  <project path="cadquery/util/jupyter-cadquery" name="bernhard-42/jupyter-cadquery" groups="occ cadquery"/>
+  <project path="cadquery/util/cq_gears" name="meadiode/cq_gears" groups="occ cadquery" revision="refs/heads/main"/>
+  <project path="cadquery/util/kicad-packages3D-generator" name="kicad/libraries/kicad-packages3D-generator" groups="occ cadquery" remote="gitlab"/>
+</manifest>
+#+end_src
+
+* Code
+
+* Setup
+
+Check rates:
+
+#+begin_src emacs-lisp :results value code :exports code
+(ghub-graphql-rate-limit)
+#+end_src
+
+#+RESULTS:
+#+begin_src emacs-lisp
+((limit . 5000) (cost . 1) (remaining . 5000) (resetAt . "2025-02-21T04:38:22Z"))
+#+end_src
+
+To avoid confirmations
+
+#+begin_src emacs-lisp
+(setq-local org-confirm-babel-evaluate nil)
+#+end_src
+
+
+#+name: nrepos
+#+begin_src emacs-lisp
+100
+#+end_src
+
+#+RESULTS: nrepos
+: 100
+
+* Metadata
+** Original Manifest
+
+Manually entered. After loading the submodules, it required about 4GB to keep
+the repos around. There are likely duplicate repositories in the submodules. I'm
+still not sure what the best way to resolve that is ... depends on how one may
+use =repo=.
+
+#+begin_src shell :results output table
+cat default.xml | xq -r '.manifest.project[]
+| [(."@name" | split("/"))[0,1], ."@path"] | flatten |  @csv'
+#+end_src
+
+#+RESULTS:
+| FreeCAD     | FreeCAD                      | FreeCAD                                  |
+| FreeCAD     | FreeCAD-symbols              | libs/FreeCAD-symbols                     |
+| FreeCAD     | FreeCAD-library              | libs/FreeCAD-library                     |
+| FreeCAD     | FreeCAD-LibPack              | libs/FreeCAD-LibPack                     |
+| FreeCAD     | FreeCAD-documentation        | docs/FreeCAD-documentation               |
+| FreeCAD     | FreeCAD-Help                 | docs/FreeCAD-Help                        |
+| FreeCAD     | Examples                     | Examples                                 |
+| FreeCAD     | FreeCAD-addons               | addons/FreeCAD-addons                    |
+| FreeCAD     | FreeCAD-macros               | addons/FreeCAD-macros                    |
+| FreeCAD     | FreeCAD-render               | wb/FreeCAD-render                        |
+| FreeCAD     | FreeCAD.ship                 | wb/FreeCAD.ship                          |
+| FreeCAD     | FreeCAD.plot                 | wb/FreeCAD.plot                          |
+| FreeCAD     | FreeCAD.workbench_starterkit | wb/FreeCAD.workbench_starterkit          |
+| FreeCAD     | ArchDesign                   | wb/ArchDesign                            |
+| FreeCAD     | FreeCAD-Bundle               | devops/FreeCAD-Bundle                    |
+| FreeCAD     | FreeCAD-CI                   | devops/FreeCAD-CI                        |
+| tpaviot     | oce                          | pythonocc/oce                            |
+| tpaviot     | pythonocc-core               | pythonocc/core                           |
+| tpaviot     | pythonocc-generator          | pythonocc/generator                      |
+| tpaviot     | pythonocc-utils              | pythonocc/utils                          |
+| tpaviot     | pythonocc-demos              | pythonocc/demos                          |
+| CadQuery    | OCP                          | cadquery/ocp                             |
+| CadQuery    | pywrap                       | cadquery/pywrap                          |
+| CadQuery    | cadquery                     | cadquery/cadquery                        |
+| CadQuery    | CQ-editor                    | cadquery/cq-editor                       |
+| CadQuery    | cadquery-plugins             | cadquery/plugins                         |
+| CadQuery    | ocp-build-system             | cadquery/ocp-build-system                |
+| CadQuery    | cq-cli                       | cadquery/cq-cli                          |
+| CadQuery    | cadquery-contrib             | cadquery/contrib                         |
+| bernhard-42 | jupyter-cadquery             | cadquery/util/jupyter-cadquery           |
+| meadiode    | cq_gears                     | cadquery/util/cq_gears                   |
+| kicad       | libraries                    | cadquery/util/kicad-packages3D-generator |
+
+** Repo Sizes
+
+Clone bundle sizes
+
+Call the restclient block below using ~#+call: fetchMetadata(gh-org="FreeCAD")~
+
+#+name: fetchMetadata
+#+headers: :var gh-org="FreeCAD" :jq-args "--raw-output" :eval query :results table
+#+begin_src restclient :jq "."
+# #+begin_src restclient :jq "sort_by(-.size) | map([.owner.login, .name, .size, .default_branch, .archived, .updated_at])[] | @csv"
+:gh-graphql-url = https://api.github.com/graphql
+:gh-url-base = https://api.github.com
+:gh-url-path = orgs/:gh-org/repos
+:gh-token := (auth-source-pass-get 'secret "api.github.com/dcunited001^ghub")
+
+:headers = <<
+Accept: application/vnd.github+json
+Authorization: Bearer :gh-token
+X-GitHub-Api-Version: 2022-11-28
+User-Agent: Emacs
+#
+
+GET :gh-url-base/:gh-url-path
+:headers
+#+end_src
+
+*** FreeCAD
+
+#+name: freecadMetadata
+#+call: fetchMetadata(gh-org="FreeCAD")
+
+#+RESULTS: freecadMetadata
+| FreeCAD | FreeCAD-library               | 5760558 | master | false | 2025-02-28T13:55:37Z |
+| FreeCAD | FreeCAD                       | 2150080 | main   | false | 2025-03-01T18:33:19Z |
+| FreeCAD | FreeCAD-documentation         |  574007 | main   | false | 2025-01-25T11:59:42Z |
+| FreeCAD | FreeCAD-Doc                   |  186865 | master | false | 2024-02-22T19:19:48Z |
+| FreeCAD | FreeCAD-Homepage              |  149642 | main   | false | 2025-02-28T09:01:43Z |
+| FreeCAD | SourceDoc                     |  146293 | main   | false | 2025-01-20T03:55:43Z |
+| FreeCAD | API                           |   47729 | master | false | 2023-07-25T14:36:36Z |
+| FreeCAD | FreeCAD-render                |   41238 | master | false | 2025-02-28T21:33:00Z |
+| FreeCAD | homebrew-freecad              |   34182 | master | false | 2025-02-02T01:57:58Z |
+| FreeCAD | Examples                      |   17820 | master | false | 2025-02-25T13:08:48Z |
+| FreeCAD | freecad.ship                  |    7620 | master | false | 2025-02-21T20:20:19Z |
+| FreeCAD | FreeCAD-macros                |    3550 | master | false | 2025-02-25T14:52:55Z |
+| FreeCAD | old_homepage                  |    2728 | master | false | 2023-07-25T13:48:43Z |
+| FreeCAD | FreeCAD-Bundle                |    2681 | main   | false | 2025-02-13T17:07:45Z |
+| FreeCAD | freecad.github.io             |    1007 | master | false | 2025-01-07T09:38:46Z |
+| FreeCAD | freecad.plot                  |     780 | master | false | 2025-02-15T08:37:39Z |
+| FreeCAD | FreeCAD-blog                  |     756 | master | false | 2023-08-09T03:17:32Z |
+| FreeCAD | freecad-feedstock             |     685 | master | false | 2025-02-28T18:34:38Z |
+| FreeCAD | FreeCAD_Conda                 |     527 | master | false | 2025-02-06T13:11:18Z |
+| FreeCAD | FreeCAD-addons                |     366 | master | false | 2025-02-28T20:26:29Z |
+| FreeCAD | FreeCAD-translations          |     194 | main   | false | 2024-08-29T00:10:05Z |
+| FreeCAD | freecad.workbench_starterkit  |      70 | master | false | 2024-12-08T17:02:19Z |
+| FreeCAD | FreeCAD-CI                    |      64 | main   | false | 2024-02-22T19:19:27Z |
+| FreeCAD | FreeCAD-ports-cache           |      28 | master | true  | 2025-02-22T19:36:04Z |
+| FreeCAD | FreeCAD-symbols               |      21 | master | false | 2024-11-05T07:10:26Z |
+| FreeCAD | FreeCAD-WebServices           |      21 | master | false | 2023-07-25T14:31:22Z |
+| FreeCAD | ArchDesign                    |      17 | master | false | 2024-02-22T19:19:36Z |
+| FreeCAD | FreeCAD-Enhancement-Proposals |      16 | master | false | 2024-08-21T05:26:29Z |
+| FreeCAD | FreeCAD-icons                 |       4 | master | true  | 2025-02-22T22:13:36Z |
+| FreeCAD | Docker                        |       0 | master | false | 2024-08-21T05:36:27Z |
+
+*** tpaviot
+
+The subscriber you dialed is not a github organization, but a fairly prolific
+python user in need of a patreon.
+
+#+name: tpaviotMetadata
+#+call: fetchMetadata(gh-org="tpaviot")
+
+#+RESULTS: tpaviotMetadata
+| {                                                                                            |   |
+| message: "Not Found"                                                                         |   |
+| documentation_url: "https://docs.github.com/rest/repos/repos#list-organization-repositories" |   |
+| status: "404"                                                                                |   |
+| }                                                                                            |   |
+
+*** CadQuery
+
+#+name: cadqueryMetadata
+#+call: fetchMetadata(gh-org="CadQuery")
+
+#+RESULTS: cadqueryMetadata
+| CadQuery | tigl                       | 99552 | cpacs_3 | false | 2018-12-29T10:56:12Z |
+| CadQuery | pythonocc-core             | 60517 | master  | false | 2024-11-20T17:58:14Z |
+| CadQuery | VisualizationLibrary       | 56673 | master  | false | 2019-08-04T16:23:40Z |
+| CadQuery | cadquery-freecad-workbench | 48239 | master  | false | 2025-01-16T12:38:57Z |
+| CadQuery | QuickVtk                   | 47064 | master  | false | 2019-07-06T07:52:30Z |
+| CadQuery | rhiocad                    | 37393 | master  | false | 2023-07-03T13:37:34Z |
+| CadQuery | QtVtk                      | 29010 | master  | false | 2019-05-22T20:30:05Z |
+| CadQuery | OCP                        | 27302 | master  | false | 2025-02-22T19:12:19Z |
+| CadQuery | declaracad                 | 14751 | master  | false | 2019-04-10T01:32:57Z |
+| CadQuery | pywrap                     | 14210 | master  | false | 2025-01-07T07:11:04Z |
+| CadQuery | cadquery                   | 12252 | master  | false | 2025-03-01T06:43:54Z |
+| CadQuery | zencad                     |  6600 | master  | false | 2021-01-06T00:51:31Z |
+| CadQuery | cqparts                    |  6015 | master  | false | 2022-05-31T23:26:04Z |
+| CadQuery | ccad-1                     |  4641 | master  | false | 2020-11-16T16:39:11Z |
+| CadQuery | CQ-editor                  |  2841 | master  | false | 2025-03-01T02:11:13Z |
+| CadQuery | cadquery-contrib           |  2774 | master  | false | 2025-02-17T07:12:15Z |
+| CadQuery | ccad                       |  1862 | master  | false | 2018-10-26T13:49:01Z |
+| CadQuery | occmodel                   |   878 | master  | false | 2018-10-26T13:57:31Z |
+| CadQuery | aoc-utils                  |   755 | master  | false | 2018-10-26T13:55:45Z |
+| CadQuery | servoce                    |   605 | master  | false | 2019-06-25T06:11:05Z |
+| CadQuery | rcad                       |   492 | master  | false | 2018-10-26T14:01:03Z |
+| CadQuery | sphinxcadquery             |   411 | master  | false | 2024-12-14T10:08:55Z |
+| CadQuery | schema                     |   360 | master  | false | 2019-08-21T21:00:59Z |
+| CadQuery | anytree                    |   258 | master  | false | 2019-07-24T17:50:40Z |
+| CadQuery | conda-packages             |   164 | master  | false | 2025-01-25T08:50:49Z |
+| CadQuery | occQt                      |   109 | master  | false | 2019-07-08T20:02:17Z |
+| CadQuery | occt-feedstock             |    84 | master  | false | 2020-04-01T20:16:20Z |
+| CadQuery | astpath                    |    34 | master  | false | 2018-12-23T19:54:52Z |
+| CadQuery | cymbal                     |    16 | master  | false | 2019-08-01T10:18:40Z |
+| CadQuery | CQ-solver                  |     5 | master  | false | 2018-08-28T20:19:50Z |
