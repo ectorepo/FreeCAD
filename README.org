@@ -155,8 +155,7 @@ Call the restclient block below using ~#+call: fetchMetadata(gh-org="FreeCAD")~
 
 #+name: fetchMetadata
 #+headers: :var gh-org="FreeCAD" :jq-args "--raw-output" :eval query :results table
-#+begin_src restclient :jq "."
-# #+begin_src restclient :jq "sort_by(-.size) | map([.owner.login, .name, .size, .default_branch, .archived, .updated_at])[] | @csv"
+#+begin_src restclient :jq "sort_by(-.size) | map([.owner.login, .name, .size, .default_branch, .archived, .updated_at])[] | @csv"
 :gh-graphql-url = https://api.github.com/graphql
 :gh-url-base = https://api.github.com
 :gh-url-path = orgs/:gh-org/repos
